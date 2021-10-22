@@ -4,13 +4,18 @@ function Sushi({ data, setMoney, money, setPlates }) {
   const [empty, setEmpty] = useState(false);
 
   const handlePlate = () => {
-    setPlates((current) => {
-      const copy = [...current, 1];
-      const Copy1 = copy.splice(1, 1);
-      const newArray = copy.concat(Copy1);
-      console.log(newArray.length);
-      return newArray;
-    });
+    if (money > data.price) {
+      setPlates((current) => {
+        const copy = [...current, 1];
+        const Copy1 = copy.splice(1, 1);
+        const newArray = copy.concat(Copy1);
+        console.log(newArray.length);
+        return newArray;
+      });
+    } else {
+      return false;
+    }
+
     setEmpty(!empty);
     if (money > data.price) {
       setMoney((current) => Number(current) - Number(data.price));
