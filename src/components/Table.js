@@ -1,4 +1,5 @@
 import React from "react";
+import "../index.css";
 
 function Table({ plates, money }) {
   // renders an empty plate for every element in the array
