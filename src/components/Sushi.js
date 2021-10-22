@@ -4,7 +4,7 @@ function Sushi({ data, setMoney, money, setPlates }) {
   const [empty, setEmpty] = useState(false);
 
   const handlePlate = () => {
-    if (money > data.price) {
+    if (money >= data.price) {
       setPlates((current) => {
         const copy = [...current, 1];
         const Copy1 = copy.splice(1, 1);
@@ -15,9 +15,11 @@ function Sushi({ data, setMoney, money, setPlates }) {
     } else {
       return false;
     }
+    if (money >= data.price) {
+      setEmpty(!empty);
+    }
 
-    setEmpty(!empty);
-    if (money > data.price) {
+    if (money >= data.price) {
       setMoney((current) => Number(current) - Number(data.price));
     } else {
       return console.log("Sorry There is Not Money");
