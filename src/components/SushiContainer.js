@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MoreButton from "./MoreButton";
 import Sushi from "./Sushi";
 
-function SushiContainer({ sushiList, setMoney, money }) {
+function SushiContainer({ sushiList, setMoney, money, setPlates }) {
   const [amout, setAmount] = useState(0);
   const [amount2, setAmount2] = useState(4);
 
@@ -17,7 +17,13 @@ function SushiContainer({ sushiList, setMoney, money }) {
     <div className="belt">
       {copyData.slice(amout, amount2).map((data) => {
         return (
-          <Sushi key={data.id} data={data} setMoney={setMoney} money={money} />
+          <Sushi
+            key={data.id}
+            data={data}
+            setMoney={setMoney}
+            money={money}
+            setPlates={setPlates}
+          />
         );
       })}
       <MoreButton handleAmount={handleAmount} />
